@@ -135,7 +135,7 @@ class IsolateHolderService : MethodChannel.MethodCallHandler, LocationUpdateList
             }
         }
 
-        return START_STICKY
+        return START_NOT_STICKY
     }
 
     private fun startHolderService(intent: Intent) {

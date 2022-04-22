@@ -57,25 +57,25 @@ static BackgroundLocatorPlugin *instance = nil;
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Check to see if we're being launched due to a location event.
-    if (launchOptions[UIApplicationLaunchOptionsLocationKey] != nil) {
+   // if (launchOptions[UIApplicationLaunchOptionsLocationKey] != nil) {
         // Restart the headless service.
-        [self startLocatorService:[PreferencesManager getCallbackDispatcherHandle]];
-        [PreferencesManager setObservingRegion:YES];
-    } else if([PreferencesManager isObservingRegion]) {
-        [self prepareLocationManager];
-        [self removeLocator];
-        [PreferencesManager setObservingRegion:NO];
-        [_locationManager startUpdatingLocation];
+      //  [self startLocatorService:[PreferencesManager getCallbackDispatcherHandle]];
+       // [PreferencesManager setObservingRegion:YES];
+   // } else if([PreferencesManager isObservingRegion]) {
+      //  [self prepareLocationManager];
+      //  [self removeLocator];
+      //  [PreferencesManager setObservingRegion:NO];
+      //  [_locationManager startUpdatingLocation];
     }
     
     // Note: if we return NO, this vetos the launch of the application.
-    return YES;
+    return NO;
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    if ([PreferencesManager isServiceRunning]) {
-        [_locationManager startMonitoringSignificantLocationChanges];
-    }
+   // if ([PreferencesManager isServiceRunning]) {
+    //    [_locationManager startMonitoringSignificantLocationChanges];
+   // }
 }
 
 -(void)applicationWillTerminate:(UIApplication *)application {
@@ -182,7 +182,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   initialDataDictionary:(NSDictionary*)initialDataDictionary
         disposeCallback:(int64_t)disposeCallback
                settings: (NSDictionary*)settings {
-    [self->_locationManager requestAlwaysAuthorization];
+    //[self->_locationManager requestAlwaysAuthorization];
         
     long accuracyKey = [[settings objectForKey:kSettingsAccuracy] longValue];
     CLLocationAccuracy accuracy = [Util getAccuracy:accuracyKey];
@@ -212,7 +212,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [disposePluggable setCallback:disposeCallback];
         
     [_locationManager startUpdatingLocation];
-    [_locationManager startMonitoringSignificantLocationChanges];
+   // [_locationManager startMonitoringSignificantLocationChanges];
 }
 
 - (void)removeLocator {
