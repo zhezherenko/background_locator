@@ -66,7 +66,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
       //  [self removeLocator];
       //  [PreferencesManager setObservingRegion:NO];
       //  [_locationManager startUpdatingLocation];
-    }
+  //  }
     
     // Note: if we return NO, this vetos the launch of the application.
     return NO;
